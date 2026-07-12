@@ -6,8 +6,6 @@ import socket
 HOST = '127.0.0.1'
 PORT = 8080
 
-print("change made")
-
 # @joshua
 
 
@@ -42,7 +40,7 @@ def remove_client():
 def get_clients():
     pass
 
-# @victor
+# @sylvester
 
 
 def start_client_thread():
