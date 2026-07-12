@@ -6,17 +6,80 @@ import socket
 HOST = '127.0.0.1'
 PORT = 8080
 
+# @joshua
 
-# this is the main function of the script - its entry point. execution starts here
+
+def create_server():
+    pass
+
+# @safia
+
+
+def start_server():
+    pass
+
+# @salma
+
+
+def accept_client():
+    pass
+
+# @roland
+
+
+def add_client():
+    pass
+
+
+def remove_client():
+    pass
+
+# reginald
+
+
+def get_clients():
+    pass
+
+# @victor
+
+
+def start_client_thread():
+    pass
+
+
+# @rexfordayensu
+def get_current_datetime():
+    # return a tuple of date and time
+    pass
+
+# ignore for now
+
+
+def format_datetime():
+    pass
+
+# @will-cypher
+
+
+def create_message():
+    pass
+
+# @ohenewa-a
+
+
+def periodic_push():
+    pass
+
+# @tracy
+
+
+def send_to_client():
+    pass
+
+
+# @reginald
 def main():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind((HOST, PORT))
-    sock.listen()
-    print("sever started and listening")
-    conn, addr = sock.accept()
-    # now get the date and send to the connected address
-
-    sock.close()
+    pass
 
 
 if __name__ == "__main__":
