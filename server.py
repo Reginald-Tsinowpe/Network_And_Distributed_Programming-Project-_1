@@ -21,8 +21,24 @@ def start_server():
 # @salma
 
 
-def accept_client():
-    pass
+def accept_client(server_socket):
+    """
+    Blocks until a new client connects, then registers it and
+    kicks off a thread to handle it.
+    """
+    try:
+        client_socket, client_address = server_socket.accept()
+        print(f"[NEW CONNECTION] {client_address} connected.")
+
+        add_client(client_socket, client_address)
+        start_client_thread(client_socket, client_address)
+
+        return client_socket, client_address
+    except OSError as e:
+        # Happens e.g. if the server_socket is closed while accept() is blocking
+        print(f"[ACCEPT ERROR] {e}")
+        return None
+   
 
 # @roland
 
