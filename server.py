@@ -1,86 +1,45 @@
 import socket
-# from datetime import datetime here
+import threading
+from datetime import datetime
 
+# Server Configuration
+HOST = '127.0.0.1'  # Localhost
+PORT = 65432        # Arbitrary non-privileged port
 
-# core variable declaration is done here to make it globally accessible by functions
-HOST = '127.0.0.1'
-PORT = 8080
-
-# @joshua
-
-
-def create_server():
-    pass
-
-# @safia
-
+def handle_client(client_socket, client_address):
+    print(f"[NEW CONNECTION] {client_address} connected.")
+    try:
+        # Get current date and time
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        message = f"Server Time: {current_time}\n"
+        
+        # Send the date string encoded in bytes
+        client_socket.sendall(message.encode('utf-8'))
+    except Exception as e:
+        print(f"[ERROR] Handling client {client_address}: {e}")
+    finally:
+        client_socket.close()
+        print(f"[DISCONNECTED] {client_address} disconnected.")
 
 def start_server():
-    pass
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Allow immediate reuse of the port after stopping the server
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    
+    server.bind((HOST, PORT))
+    server.listen()
+    print(f"[STARTING] Date Server is listening on {HOST}:{PORT}...")
 
-# @salma
-
-
-def accept_client():
-    pass
-
-# @roland
-
-
-def add_client():
-    pass
-
-
-def remove_client():
-    pass
-
-# reginald
-
-
-def get_clients():
-    pass
-
-# @sylvester
-
-
-def start_client_thread():
-    pass
-
-
-# @rexfordayensu
-def get_current_datetime():
-    # return a tuple of date and time
-    pass
-
-# ignore for now
-
-
-def format_datetime():
-    pass
-
-# @will-cypher
-
-
-def create_message():
-    pass
-
-# @ohenewa-a
-
-
-def periodic_push():
-    pass
-
-# @tracy
-
-
-def send_to_client():
-    pass
-
-
-# @reginald
-def main():
-    pass
-
+    try:
+        while True:
+            client_socket, client_address = server.accept()
+            # Handle each client connection in a separate thread
+            thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
+            thread.start()
+    except KeyboardInterrupt:
+        print("\n[SHUTTING DOWN] Server is stopping safely.")
+    finally:
+        server.close()
 
 if __name__ == "__main__":
-    main()
+    start_server()
