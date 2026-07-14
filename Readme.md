@@ -9,7 +9,7 @@ communication. The server sends data to the client only.
 because the course actually focuses on using low-level network programming, and not frameworks,
 we will use sockets for the project
 
-The notes use java, but i don't think many of us are conversant, or can get conversant with it because of hoe verbose it is
+The notes use java, but i don't think many of us are conversant, or can get conversant with it because of how verbose it is
 for that reason, we will use python for our server and client codes
 
 ---
