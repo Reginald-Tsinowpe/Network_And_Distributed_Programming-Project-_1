@@ -5,6 +5,8 @@ PORT = 8080
 
 client_socket = None
 
+# @victor // change here
+
 
 def create_client():
     global client_socket
@@ -28,6 +30,7 @@ def receive_messages():
         try:
             message = client_socket.recv(1024)
 
+            # @ sedem-edward. take this if statement
             if not message:
                 handle_disconnect()
                 break

@@ -102,7 +102,7 @@ def periodic_push(client):
         while True:
             message = create_message()
             send_to_client(client, message)
-            time.sleep(1)
+            time.sleep(10)
     except:
         remove_client(client)
 
