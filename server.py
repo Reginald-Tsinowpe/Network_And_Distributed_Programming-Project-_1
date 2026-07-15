@@ -64,9 +64,19 @@ def start_client_thread():
 
 
 # @rexfordayensu
+from datetime import datetime
+
+# @rex
 def get_current_datetime():
+    # Get the current local date and time
+    now = datetime.now()
+    
+    # Format them cleanly as strings (or you can return raw date/time objects)
+    current_date = now.strftime("%Y-%m-%d")
+    current_time = now.strftime("%H:%M:%S")
+    
     # return a tuple of date and time
-    pass
+    return (current_date, current_time)
 
 # ignore for now
 
